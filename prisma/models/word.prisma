@@ -1,0 +1,5 @@
+model Word {
+  id      Int       @id @default(autoincrement())
+  key     String    @unique
+  message Message[]
+}

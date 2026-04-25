@@ -1,0 +1,22 @@
+model Message {
+  id           Int         @id @default(autoincrement())
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  type         MessageType @default(PARENT)
+  author       User        @relation(fields: [authorId], references: [id])
+  authorId     Int
+  parent       Message?    @relation("parentChildren", fields: [parentId], references: [id])
+  parentId     Int?
+  children     Message[]   @relation("parentChildren")
+  sentence     Sentence    @relation(fields: [sentenceId], references: [id])
+  sentenceId   Int
+  words        Word[]
+  viewCount    Int         @default(0)
+  likeCount    Int         @default(0)
+  dislikeCount Int         @default(0)
+}
+
+enum MessageType {
+  PARENT
+  CHILD
+}
