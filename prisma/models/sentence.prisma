@@ -1,5 +1,6 @@
 model Sentence {
-  id       Int       @id @default(autoincrement())
-  key      String    @unique
-  messages Message[]
+  id           Int           @id @default(autoincrement())
+  label        String        @unique
+  translations Translation[]
+  messages     Message[]
 }

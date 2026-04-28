@@ -1,0 +1,9 @@
+model Translation {
+  id         Int       @id @default(autoincrement())
+  word       Word?     @relation(fields: [wordId], references: [id])
+  wordId     Int?
+  sentence   Sentence? @relation(fields: [sentenceId], references: [id])
+  sentenceId Int?
+  locale     String
+  content    String
+}
